@@ -12,11 +12,6 @@ app.config['SQLALCHEMY_TRACK_MODIFICATION'] = False
 app.secret_key = 'jas'
 api = Api(app)
 
-@app.before_first_request
-def create_all():
-    db.create_all()
-
-
 jwt = JWT(app, authenticate, identity) 
 # jwt creates a new endpoint(/auth).when we call auth
 # we send it username and password and then jwt extens. takes the username and password and 
