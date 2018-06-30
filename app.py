@@ -51,7 +51,7 @@ def invalid_token_callback(error):
     }), 401
 
 # It will be called if an no JWT can be found when attempting to access a protected endpoint
-@jwt.unauthorised_loader
+@jwt.unauthorized_loader
 def missing_token_callback(error):
     return jsonify({
         'description': 'Request does not contain an access token.',
