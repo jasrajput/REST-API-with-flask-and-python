@@ -28,13 +28,13 @@ def add_claims_to_jwt(identity):
         return {'is_admin': True}
     return {'is_admin': False}
 
-# This decorator sets the callback function that will be called when a protected endpoint is accessed and will #check if the JWT has been been revoked
+# it will be called when a protected endpoint is accessed and will #check if the JWT has been been revoked
 @jwt.token_in_blacklist_loader
 def check_if_token_in_blacklist(decrypted_token):
     jti = decrypted_token['jti']
     return RevokedTokenModel.is_jti_blacklisted(jti)
 
-# This decorator sets the callback function that will be called if an expired JWT attempts to access protected #endpoint.
+#sets the callback function that will be called if an expired JWT attempts to access protected enpoint
 @jwt.expired_token_loader
 def expired_token_callback():
     return jsonify({
@@ -42,8 +42,8 @@ def expired_token_callback():
         'error': 'token_expired'
     }), 401
 
-# This decorator sets the callback function that will be called if an invalid JWT attempts to access a #protected endpoint
-@jwt.invalid_token_loader()
+#sets the callback function that will be called if an invalid JWT attempts to access a protected endpoint
+@jwt.invalid_token_loader
 def invalid_token_callback(error):
     return jsonify({
         'message': 'Signature verification failed',
