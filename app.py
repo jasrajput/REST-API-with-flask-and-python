@@ -5,7 +5,6 @@ from flask_restful import Api
 from flask_jwt_extended import JWTManager
 
 from db import db
-# from blacklist import BLACKLIST
 from resources.item import Item, ItemList
 from resources.user import UserRegister, UserLogin, UserLogout, TokenRefresh,User
 from models.user import RevokedTokenModel
@@ -74,6 +73,12 @@ def revoked_token_callback():
         'description': 'The token has been revoked',
         'error': 'token_revoked',
     }),401 
+
+
+@app.before_first_request
+def create_all():
+    db.create_all()
+
 
 api.add_resource(Store, '/store/<string:name>')
 api.add_resource(StoreList, '/stores')
