@@ -12,7 +12,7 @@ from resources.store import Store, StoreList
 
 app =  Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
-conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+conn = psycopg2.connect('DATABASE_URL', sslmode='require')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['PROPAGATE_EXCEPTIONS'] = True
 app.config['JWT_SECRET_KEY'] = '1234jas3409' # secret key 
