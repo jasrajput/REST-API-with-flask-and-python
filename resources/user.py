@@ -8,7 +8,7 @@ from flask_jwt_extended import (
     get_raw_jwt,
     jwt_required
 )
-# from blacklist import BLACKLIST
+
 from werkzeug.security import safe_str_cmp
 
 _user_parser = reqparse.RequestParser()
@@ -79,6 +79,11 @@ class User(Resource):
         user.delete_from_db()
         return {'message': 'User Deleted.'}, 200
 
+class Users(Resource):
+    @classmethod
+    def get(cls):
+        users = [users.json() for users in UserModel.find_all()]
+        return {'users': users} ,200
 
 class TokenRefresh(Resource):
     @jwt_refresh_token_required

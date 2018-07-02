@@ -82,7 +82,7 @@ class ItemList(Resource):
         items = [items.json() for items in ItemModel.find_all()]
         if user_id:
             return {'items': items}, 200
-        return {'items': [item['name'] for item in ItemModel],
+        return {'items': [item['name'] for item in items],
                 'message': 'More data available if you log in.'}, 200
         
     #return {"item": [x.json() for x in ItemModel.query.all()]} # set comprehension

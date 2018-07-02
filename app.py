@@ -6,7 +6,7 @@ from flask_jwt_extended import JWTManager
 
 # from db import db
 from resources.item import Item, ItemList
-from resources.user import UserRegister, UserLogin, UserLogout, TokenRefresh,User
+from resources.user import UserRegister, UserLogin, UserLogout, TokenRefresh,User, Users
 from models.user import RevokedTokenModel
 from resources.store import Store, StoreList
 
@@ -82,6 +82,7 @@ api.add_resource(Item, '/item/<string:name>')
 api.add_resource(UserRegister, '/register')
 api.add_resource(UserLogin, '/login')
 api.add_resource(User, '/user/<int:user_id>')
+api.add_resource(Users, '/users')
 api.add_resource(TokenRefresh, '/refresh')
 api.add_resource(UserLogout, '/logout')
 
