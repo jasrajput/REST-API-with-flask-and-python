@@ -41,7 +41,8 @@ class Item(Resource):
         try:
             item.save_to_db()
         except:
-            return item.json(), 201
+            return {"message": "An error occurred while inserting the item."}, 500
+        return item.json(), 201
 
 
     @jwt_required
@@ -54,22 +55,19 @@ class Item(Resource):
         if item:
             item.delete_from_db()
             return {'message': 'Item deleted.'}
-        return {'message': 'Item not found' }
-        # global items
-        # items = list(filter(lambda x: x['name'] != name, items))#our item list is a list result of filtering on lambda where name is not equal to the name,that was passed in.
+        return {'message': 'Item not found' }, 404
 
 
     def put(self,name):
-        data = Item.parser.parse_args()
+        data = self.parser.parse_args()
         
         item = ItemModel.find_by_name(name)
 
-        if item is None: # Doubttttttttt
+        if item: # Doubttttttttt
             item.price = data['price']
         else:
             item = ItemModel(name, **data)   
             
-
         item.save_to_db()
 
         return item.json()
