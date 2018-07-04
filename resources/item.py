@@ -23,7 +23,7 @@ class Item(Resource):
        if item:
            return item.json()
        return {"message": "item not found"},404
-        # for item in items:0
+        # for item in items:
         #     # if item['name']==name:
         #     #     return item
         #             or 
@@ -63,7 +63,7 @@ class Item(Resource):
         
         item = ItemModel.find_by_name(name)
 
-        if item: # Doubttttttttt
+        if item: 
             item.price = data['price']
         else:
             item = ItemModel(name, **data)   

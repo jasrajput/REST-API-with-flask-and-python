@@ -1,10 +1,9 @@
 import os
-# from db import db
+
 from flask import Flask, jsonify
 from flask_restful import Api 
 from flask_jwt_extended import JWTManager
 
-# from db import db
 from resources.item import Item, ItemList
 from resources.user import UserRegister, UserLogin, UserLogout, TokenRefresh,User, Users
 from models.user import RevokedTokenModel
