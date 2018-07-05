@@ -34,7 +34,7 @@ class UserRegister(Resource):
         user = UserModel(**data)
         user.save_to_db()
        
-        return {"username": data["username"], "password": data["password'"], "message": "User created successfully"}, 201
+        return {"username": data["username"], "password": data["password"], "message": "User created successfully"}, 201
       
 
 
