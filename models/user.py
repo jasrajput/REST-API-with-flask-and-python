@@ -24,7 +24,7 @@ class UserModel(db.Model):
 
     @classmethod
     def delete_all(cls):
-        return cls.query.delete()        
+        return cls.query.filter_by.delete()        
 
     @classmethod
     def find_by_id(cls, _id):
