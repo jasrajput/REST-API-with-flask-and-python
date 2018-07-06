@@ -20,7 +20,11 @@ class UserModel(db.Model):
 
     @classmethod
     def find_all(cls):
-        return cls.query.all()        
+        return cls.query.all()
+
+    @classmethod
+    def delete_all(cls):
+        return cls.query.delete()        
 
     @classmethod
     def find_by_id(cls, _id):
