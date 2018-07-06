@@ -86,6 +86,7 @@ class Users(Resource):
         users = [users.json() for users in UserModel.find_all()]
         return {'users': users} ,200
         
+class DeleteUsers(Resource):
     @classmethod
     def delete(cls):
         users = [users.json() for users in UserModel.find_all()]
