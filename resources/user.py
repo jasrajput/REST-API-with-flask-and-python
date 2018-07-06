@@ -89,7 +89,7 @@ class Users(Resource):
 class DeleteUsers(Resource):
     @classmethod
     def delete(cls):
-        users = UserModel.find_all()]
+        users = UserModel.find_all()
         if users:
             users.delete_from_db()
             return {'users': 'users deleted'}
