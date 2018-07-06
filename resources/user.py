@@ -90,8 +90,9 @@ class DeleteUsers(Resource):
     @classmethod
     def delete(cls):
         users = [users.json() for users in UserModel.find_all()]
-        users.delete_from_db()
-        return {'users': 'users deleted'}
+        if users:
+            users.delete_from_db()
+            return {'users': 'users deleted'}
     
 class TokenRefresh(Resource):
     @jwt_refresh_token_required
