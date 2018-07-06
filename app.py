@@ -5,7 +5,7 @@ from flask_restful import Api
 from flask_jwt_extended import JWTManager
 
 from resources.item import Item, ItemList
-from resources.user import UserRegister, UserLogin, UserLogout, TokenRefresh,User, Users
+from resources.user import UserRegister, UserLogin, UserLogout, TokenRefresh,User, Users, DeleteUsers
 from models.user import RevokedTokenModel
 from resources.store import Store, StoreList
 
